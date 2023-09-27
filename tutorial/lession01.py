@@ -1,7 +1,7 @@
 #Mainly Covers:
 
 #print function
-print(“hello world”)
+print('hello world')
 
 #Basic Operation
 #Basic math (+, -, *, /, **, %)
@@ -20,8 +20,9 @@ print(“hello world”)
     #Set: Item that couldn’t be redundant. (1,2,3,4) < 
 
 #f string 
-print(f’{name} + ‘is a boy’’
 
-Task: 
+print(f'{name} + ‘is a boy')
 
-- BMI Calculator 
+# Task: 
+
+# - BMI Calculator 
