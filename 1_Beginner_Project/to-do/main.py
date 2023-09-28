@@ -1,7 +1,7 @@
 todos = []
 
 while True:
-    user_action = input("Type add, show, edit, complete or exit:  ").strip()
+    user_action = input("Type add, show, edit, complete or exittt:  ").strip()
 
     match user_action:
         case "add":
