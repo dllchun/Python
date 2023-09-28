@@ -7,7 +7,7 @@ while True:
         case "add":
             todo = input("Enter a todo: ")
             todos.append(todo)
-        case "showddd":
+        case "show":
             for index, item in enumerate(todos):
                 print(f"{index + 1} -- {item}")
         case "edit":
