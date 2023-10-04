@@ -5,13 +5,13 @@ import pandas
 st.header("contact us")
 
 with open("topics.csv") as topic_file:
-    print(topic_file.read())
+    topics = topic_file.readlines()
 
 
 with st.form(key="email_forms"):
     user_email = st.text_input("Your Email Address")
     raw_message = st.text_area("Message")
-    topics = st.selectbox("How would you like to talk about", ("Email", "Email"))
+    topics = st.selectbox("How would you like to talk about", (topics[1:]))
     message = f"""
     Subject: New email from {user_email}
     From: {user_email}
