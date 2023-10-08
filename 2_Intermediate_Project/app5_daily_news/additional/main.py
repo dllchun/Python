@@ -5,10 +5,11 @@ import requests as r
 
 api_key = "lraYAxtSweb8QehqJFpI3VmRDcsKBVnWtqS8Aume"
 url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
+
 # Make API request
 
-request = r.get(url)
-content = request.json()
+response = r.get(url)
+content = response.json()
 
 # Stroe variable
 img_url = content["url"]
