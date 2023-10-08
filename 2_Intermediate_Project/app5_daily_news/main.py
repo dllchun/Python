@@ -1,4 +1,5 @@
 import requests as r
+from send_email import send_email
 
 # API info
 with open("2_Intermediate_Project/app5_daily_news/api_key.txt", "r") as f:
@@ -15,11 +16,20 @@ request = r.get(url)
 content = request.json()
 
 # Access the title and description
-articles = content["articles"]
 
-for article in articles:
-    print(str(article["author"]) + "\n")
-    print(str(article["description"]) + "\n")
+body = ""
+for article in content["articles"]:
+    if article["title"] is not None:
+        body = (
+            body
+            + article["title"]
+            + "\n"
+            + article["description"]
+            + "\n"
+            + article["url"]
+            + 2 * "\n"
+        )
 
 
-# SMTP setup
+body = body.encode("utf-8")
+send_email(body)
