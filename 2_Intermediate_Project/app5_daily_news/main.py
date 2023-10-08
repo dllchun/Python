@@ -6,7 +6,13 @@ with open("2_Intermediate_Project/app5_daily_news/api_key.txt", "r") as f:
     api_key = f.read()
     f.close()
 
-url = f"https://newsapi.org/v2/everything?q=tesla&from=2023-09-08&sortBy=publishedAt&apiKey={api_key}"
+# Parameters
+
+date = "2023-10-01"
+language = "en"
+page_size = 50
+
+url = f"https://newsapi.org/v2/everything?q=tesla&from={date}&sortBy=publishedAt&apiKey={api_key}&language={language}"
 
 
 # Make request
@@ -17,8 +23,8 @@ content = request.json()
 
 # Access the title and description
 
-body = ""
-for article in content["articles"]:
+body = "Subject: Today's news"
+for article in content["articles"][:20]:
     if article["title"] is not None:
         body = (
             body
@@ -32,4 +38,5 @@ for article in content["articles"]:
 
 
 body = body.encode("utf-8")
+
 send_email(body)
