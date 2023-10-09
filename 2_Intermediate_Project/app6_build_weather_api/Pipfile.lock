@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "287c02b5e0266d94b589cf89961dfb5e1d9702e30d4d66e35b664b2b542fbbf4"
+            "sha256": "147a9848cafbbcec5e8dfb164cf6d9202396112234e210ef5124c9ca62ef90c8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -162,6 +162,14 @@
             ],
             "markers": "python_version >= '2.7'",
             "version": "==1.20.0"
+        },
+        "blinker": {
+            "hashes": [
+                "sha256:152090d27c1c5c722ee7e48504b02d76502811ce02e1523553b4cf8c8b3d3a8d",
+                "sha256:296320d6c28b006eb5e32d4712202dbcdcbf5dc482da298c2f44881c43884aaa"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.6.3"
         },
         "blis": {
             "hashes": [
@@ -487,6 +495,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==3.12.4"
         },
+        "flask": {
+            "hashes": [
+                "sha256:21128f47e4e3b9d597a3e8521a329bf56909b690fcc3fa3e477725aa81367638",
+                "sha256:cfadcdb638b609361d29ec22360d6070a77d7463dcb3ab08d2c2f2f168845f58"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==3.0.0"
+        },
         "frozenlist": {
             "hashes": [
                 "sha256:007df07a6e3eb3e33e9a1fe6a9db7af152bbd8a185f9aaa6ece10a3529e3e1c6",
@@ -710,6 +727,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==3.4"
+        },
+        "itsdangerous": {
+            "hashes": [
+                "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44",
+                "sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==2.1.2"
         },
         "jinja2": {
             "hashes": [
@@ -1146,7 +1171,7 @@
                 "sha256:f8db2f125746e44dce707dd44d4f4efeea8d7e2b43aace3f8d1f235cfa2733dd",
                 "sha256:f93fc78fe8bf15afe2b8d6b6499f1c73953169fad1e9a8dd086cdff3190e7fdf"
             ],
-            "markers": "python_version < '3.13' and python_version >= '3.9'",
+            "markers": "python_version < '3.11'",
             "version": "==1.26.0"
         },
         "nvidia-ml-py": {
@@ -1521,7 +1546,7 @@
                 "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86",
                 "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.8.2"
         },
         "python-slugify": {
@@ -1961,7 +1986,7 @@
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
                 "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.16.0"
         },
         "smart-open": {

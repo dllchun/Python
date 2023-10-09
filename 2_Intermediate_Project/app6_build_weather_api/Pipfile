@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 ludwig = "*"
 pandas = "*"
+flask = "*"
 
 [dev-packages]
 
