@@ -57,6 +57,24 @@ def get_all_station_date(station):
     return result
 
 
+@app.route("/api/v1/yearly/<station>/<year>")
+def get_year(station, year):
+    station_id = str(station).zfill(6)
+    weather_df_header = ["station_id", "sou_id", "date", "temp", "q_tg"]
+    filename = f"/Users/vincentcheung/Desktop/Coding/Python-1/2_Intermediate_Project/app6_build_weather_api/additional/data_small/TG_STAID{station_id}.txt"
+
+    df = pd.read_csv(
+        filename,
+        skiprows=21,
+        sep=",",
+        names=weather_df_header,
+    )
+    df["date"] = df["date"].astype(str)
+    result = df[df["date"].str.startswith(str(year))]
+    result = result.to_dict(orient="records")
+    return result
+
+
 @app.route("/api/v1/translator/<word>")
 def translate(word):
     if word.isupper():
