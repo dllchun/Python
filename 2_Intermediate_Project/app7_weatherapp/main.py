@@ -18,8 +18,14 @@ chosen_visual = st.selectbox("Select data to view", visal_options)
 st.subheader(f"Temperature for the next {forcast_days} days in {place or 'Somewhere'}")
 
 
-dates = ["2022-24-10", "2022-25-10", "2022-26-10"]
-temperatures = [23, 24, 26]
-temperatures = [forcast_days * i for i in temperatures]
-figure = px.line(x=dates, y=temperatures, labels={"x": "Date", "y": "Temperatures(c)"})
+def get_data(days):
+    dates = ["2022-24-10", "2022-25-10", "2022-26-10"]
+    temperatures = [23, 24, 26]
+    temperatures = [forcast_days * i for i in temperatures]
+    return dates, temperatures
+
+
+d, t = get_data(days)
+
+figure = px.line(x=d, y=t, labels={"x": "Date", "y": "Temperatures(c)"})
 st.plotly_chart(figure)
