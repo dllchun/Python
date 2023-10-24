@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 ludwig = "*"
 pandas = "*"
+streamlit = "*"
+nltk = "*"
+glob2 = "*"
 
 [dev-packages]
 
