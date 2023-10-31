@@ -5,7 +5,7 @@ from emailing import send_email
 import glob
 import os
 
-video = cv2.VideoCapture(1)
+video = cv2.VideoCapture(0)
 time.sleep(1)
 
 first_frame = None
@@ -49,20 +49,22 @@ while True:
 
         if rectangle.any():
             status = 1
-            cv2.imwrite(f"2_Intermediate_Project/app9_webcam/images/{count}.png", frame)
-            count += 1
-            all_images = glob.glob("2_Intermediate_Project/app9_webcam/images/*.png")
-            index = int(len(all_images) / 2)
-            image_with_object = all_images[index]
 
     # Use status_list to track the last two output to see if it match [1,0] << disapear
     status_list.append(status)
     status_list = status_list[-2:]
-    if status_list[0] == 1 and status_list[1] == 0:
-        send_email(image_with_object)
-        clean_folder()
 
-    print(status_list)
+    if status_list[0] == 1 and status_list[1] == 0:
+        cv2.imwrite(f"2_Intermediate_Project/app9_webcam/images/{count}.png", frame)
+        count += 1
+
+    all_images = glob.glob("2_Intermediate_Project/app9_webcam/images/*.png")
+
+    for image in all_images:
+        if len(all_images) < 2:
+            send_email(image)
+        else:
+            break
 
     cv2.imshow("Video", frame)
 
