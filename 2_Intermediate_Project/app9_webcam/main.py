@@ -1,4 +1,4 @@
-import cv2
+import cv2q
 import numpy as np
 import time
 from emailing import send_email
@@ -61,9 +61,8 @@ while True:
     all_images = glob.glob("2_Intermediate_Project/app9_webcam/images/*.png")
 
     for image in all_images:
-        if len(all_images) < 2:
+        if len(all_images) == 2:
             send_email(image)
-        else:
             break
 
     cv2.imshow("Video", frame)
