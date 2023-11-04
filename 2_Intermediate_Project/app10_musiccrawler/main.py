@@ -2,12 +2,22 @@ import requests
 import selectorlib
 from emailing import send_email
 import time
+import os.path
+import sqlite3
+import logging
 
 
 URL = "https://programmer100.pythonanywhere.com/tours/"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
 }
+
+# db setting
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "data.db")
+
+with sqlite3.connect(db_path) as db:
+    cursor = db.cursor()
 
 
 def scraper(url):
@@ -25,26 +35,37 @@ def extract(source):
     return value
 
 
-def store(extracted):
-    with open("2_Intermediate_Project/app10_musiccrawler/data.txt", "a") as file:
-        file.write(extracted + "\n")
+def stored_extracted(extracted):
+    row = extracted.split(",")
+    row = [row.strip() for row in row]
+    band, city, date = row
+    cursor.execute("INSERT INTO events VALUES(?,?,?)", row)
+    db.commit()
 
 
-def read(extracted):
-    with open("2_Intermediate_Project/app10_musiccrawler/data.txt", "r") as file:
-        return file.read()
+def read_extracted(extracted):
+    row = extracted.split(",")
+    row = [row.strip() for row in row]
+    band, city, date = row
+    cursor.execute(
+        "SELECT * FROM events WHERE band=? AND city=? AND date =?", (band, city, date)
+    )
+    rows = cursor.fetchall()
+    return rows
+
+
+# def insert_to_db():
 
 
 if __name__ == "__main__":
     while True:
-        scraped = scraper(URL)
-        extracted = extract(scraped)
+        source = scraper(URL)
+        extracted = extract(source)
         print(extracted)
 
-        content = read(extracted)
         if extracted != "No upcoming tours":
-            if extracted not in content:
-                store(extracted)
-                send_email(message=f"Hey new event was found! \n {extracted}")
-
-        time.sleep(10)
+            row = read_extracted(extracted)
+            if not row:
+                stored_extracted(extracted)
+                send_email(message=f"New event was found \n {extracted}")
+        time.sleep(2)
