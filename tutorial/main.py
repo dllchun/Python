@@ -77,8 +77,36 @@
 
 num1 = int(input("what is num 1: "))
 num2 = int(input("what is num 2: "))
-operator = input("what do you want? ")
+operator = input("what do you want? (Add/Minus/Time/Divide) ")
 
 result = num1 + num2
 
-print(result)
+
+""" 2nd Tutorial 
+
+- if else 
+- For loop 
+- While loop
+
+"""
+
+
+""" Calculator 
+
+- Add
+- Minus
+- Times
+- Divide 
+
+"""
+
+
+if operator == "Add":
+    result = num1 + num2
+
+elif operator == "Minus":
+    result = num1 - num2
+    
+
+
+
