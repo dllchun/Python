@@ -1,0 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
+
+
+r = requests.request("GET", "https://www.cfs.gov.hk/tc_chi/nutrient/search1.php")
+html = r.text
+soup = BeautifulSoup(r.text, "html.parser")
+
+
+# category link
+
+categories = soup.select("table.noBorder td a ")
+categories = categories[0:24]
+cat_list = [i["href"] for i in categories]
+

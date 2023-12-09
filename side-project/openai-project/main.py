@@ -7,7 +7,7 @@ from langchain.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
-def generate_pdf_list(pdfs):
+def generate_pdf_list(pdfs) -> list:
     pdf_list = []
     for i in pdfs:
         bytes_data = i.read()
@@ -22,12 +22,12 @@ def generate_pdf_list(pdfs):
     return pdf_list
 
 
-def get_directory(pdf_list):
+def get_directory(pdf_list: list) -> str:
     directory = os.path.dirname(pdf_list[0])
     return directory
 
 
-def load(directory):
+def load(directory: str) -> list:
     loader = PyPDFDirectoryLoader(directory)
     data = loader.load_and_split()
     return data
@@ -67,14 +67,14 @@ def main():
                 # print(directory)
                 data = load(directory)
                 delete_temp_file(pdf_list)
-                st.write(data)
+
                 # split text chunks
 
-                # text_splitter = RecursiveCharacterTextSplitter(
-                #     chunk_size=1000, chunk_overlap=200
-                # )
-                # text_chunk = text_splitter.create_documents(data)
-                # st.write(text_chunk)
+                text_splitter = RecursiveCharacterTextSplitter(
+                    chunk_size=1000, chunk_overlap=200
+                )
+                text_chunk = text_splitter.create_documents(data)
+                st.write(text_chunk)
 
             # save to vectordb
 
