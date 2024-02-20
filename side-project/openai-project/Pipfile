@@ -8,6 +8,7 @@ ludwig = "*"
 pandas = "*"
 openai = "*"
 langchain = "*"
+langchain-openai = "*"
 
 [dev-packages]
 
