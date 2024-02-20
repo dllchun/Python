@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ludwig = "*"
+pandas = "*"
+openai = "*"
+fpdf = "*"
+requests = "*"
+streamlit = "*"
+plotly = "*"
+glob2 = "*"
+opencv-python = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
